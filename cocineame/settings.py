@@ -80,11 +80,14 @@ WSGI_APPLICATION = 'cocineame.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'cocineame',
+        'USER': 'cocineame',
+        'PASSWORD': 'cocineame',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
