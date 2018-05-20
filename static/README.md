@@ -1,52 +1,27 @@
-# angular-typescript-webpack
+# Cocineame
 
-Angular + Typescript + Webpack build with Karma and wallaby tests support.
-And this all with sourcemaps in production support!!
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
-### Install
+## Development server
 
-```sh
-npm i webpack typings typescript -g
-git clone git@github.com/brechtbilliet/angular-typescript-webpack.git
-cd angular-typescript-webpack
-npm install
-npm start
-```
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Then it will automatically open the app in your browser
+## Code scaffolding
 
-To run tests
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-```sh
-npm test
-```
+## Build
 
-Coverage
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-```sh
-open reports/coverage/index.html
-```
+## Running unit tests
 
-Build
-```sh
-npm install
-npm run build
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+## Running end-to-end tests
 
-### Features
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-- [x] Build basic Angular app with webpack
-- [x] Simple twitter application
-- [x] fully tested with Jasmine
-- [x] sass support
-- [x] Coverage report
-- [x] Typescript support
-- [x] ES6 modules support
-- [x] Running tests in PhantomJS
-- [x] Wallaby.js support
-- [x] Karma support
-- [x] Optimized build package
-- [x] Minimal and straightforward setup
-- [x] Watches code and refreshes browser with latest changes automatically
-- [x] Sourcemap support in develop AND PRODUCTION!!! (don't deploy the js.map file with your application, but use it to debug your production app)
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
