@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,9 @@ ROOT_URLCONF = 'cocineame.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'static'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,7 +70,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'debug': DEBUG,
         },
     },
 ]
@@ -124,17 +126,34 @@ ALLOWED_HOSTS = ['*']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_URL = '/static/dist/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/dist')]
 
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, 'static'),
-]
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+
+dist_dir = os.path.join(STATICFILES_DIRS[0], 'dist/')
+stats_file = os.path.join(STATICFILES_DIRS[0], 'webpack-stats.json')
+
+print(dist_dir)
+print(stats_file)
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'dist/',
+        'STATS_FILE': os.path.join(STATICFILES_DIRS[0], 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map']
+    }
+}
+
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
